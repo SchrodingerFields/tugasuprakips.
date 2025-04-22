@@ -1,0 +1,310 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #181818;
+    color: #eee;
+    line-height: 1.7;
+    overflow-x: hidden; /* Mencegah scroll horizontal akibat efek parallax */
+}
+
+.parallax-container {
+    perspective: 1px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 1em 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.accent {
+    color: #d9534f;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #d9534f;
+}
+
+nav ul li a::before {
+    content: attr(data-text);
+    position: absolute;
+    top: -100%;
+    left: 0;
+    color: #d9534f;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(20px);
+}
+
+nav ul li a:hover::before,
+nav ul li a.active::before {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+
+#hero::before {
+    content: '';
+    background-image: url('hero-bg.jpg'); /* Ganti dengan gambar hero yang menarik */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateZ(-1px) scale(2);
+    filter: brightness(0.6);
+}
+
+.hero-content {
+    color: #fff;
+    padding: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.explore-button {
+    display: inline-block;
+    background-color: #d9534f;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.explore-button:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+.parallax-section {
+    position: relative;
+    height: auto;
+    min-height: 600px; /* Sesuaikan tinggi minimal */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(-0.5px) scale(1.5);
+    filter: brightness(0.7);
+}
+
+.content-wrapper {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #eee;
+    padding: 50px 0;
+    z-index: 1;
+    width: 100%;
+}
+
+.content-wrapper .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #d9534f;
+    border-radius: 2px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: #d9534f;
+}
+
+.card p {
+    margin-bottom: 20px;
+}
+
+.learn-more {
+    display: inline-block;
+    background-color: #5cb85c;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: #030303;
+}
+
+.timeline-wrapper {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: #d9534f;
+    transform: translateX(-50%);
+}
+
+.timeline-event {
+    margin: 30px 0;
+    width: 45%;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #eee;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-event::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #d9534f;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-event:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-event:nth-child(odd)::before {
+    right: -30px;
+}
+
+.timeline-event:nth-child(even) {
+    right: 0;
+    text-align: right;
+}
+
+.timeline-event:nth-child(even)::before {
+    left: -30px;
+}
+
+.event-date {
+    display: block;
+    font-size: 1.2em;
+    color: #d9534f;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
